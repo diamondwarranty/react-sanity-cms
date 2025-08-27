@@ -8,8 +8,9 @@ import WhiteBtn from '../components/WhiteBtn'
 import ProductCard from '../components/ProductCard'
 import ContactSection from '../components/ContactCards'
 import ContactForm from '../components/ContactForm'
+import ClaimForm from '../components/ClaimForm'
 
-export default function ContactPage() {
+export default function ClaimPage() {
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}
@@ -29,13 +30,13 @@ export default function ContactPage() {
               
               {/* Headline */}
              <h1 className="inline-block tracking-tighter text-5xl  lg:text-7xl font-lexend font-bold uppercase pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1339FF] to-[#001999]">
-       Contact
+       Start a Claim
         </h1>
         
               
               {/* Description */}
               <p className="max-w-[600px] lg:mx-0 mx-auto  tracking-tight text-xl lg:text-2xl leading-[160%] font-source-serif text-[rgba(16,16,16,0.6)]">
-              Have questions about our coverage plans, or need further assistance, we’re here to help. Use the form below to reach out to us, or call us for immediate support.
+             (Repair Shop Use Only)
 
 
               </p>
@@ -47,21 +48,12 @@ export default function ContactPage() {
             {/* Image */}
             <div className="hidden lg:flex lg:w-full lg:max-w-[calc(100%-600px)]">
               <div className="relative w-full">
-                <img
-                  src="/images/hero-diamond.png"
-                  alt="Contact"
-                  className="absolute inset-0 w-full h-full object-contain "
-                  loading="eager"
-                 
-                  decoding="async"
-                />
+               
               </div>
             </div>
           </div>
         </section>
-
-<ContactSection />
-<ContactForm />
+<ClaimForm />
 
 
  

@@ -9,6 +9,8 @@ import DiamondWarrantyPage from '../pages/DiamondWarrantyPage'
 import ContactPage from '../pages/ContactPage'
 import ScrollToTop from '../components/scrolltop'
 import FaqPage from '../pages/FaqPage'
+import ClaimPage from '../pages/ClaimPage'
+import LoginPage from '../pages/LoginPage'
 
 export default function PageRouter() {
    
@@ -22,6 +24,9 @@ export default function PageRouter() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FaqPage />} />
+            <Route path="/claim" element={<ClaimPage />} />
+            <Route path="/login" element={<LoginPage />} />
+
 
             </Routes>
       </>
