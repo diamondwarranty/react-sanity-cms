@@ -6,6 +6,7 @@ import ProductsPage from '../pages/ProductsPage'
 import DealersPage from '../pages/DealersPage'
 import AboutPage from '../pages/AboutPage'
 import DiamondWarrantyPage from '../pages/DiamondWarrantyPage'
+import ContactPage from '../pages/ContactPage'
 
 export default function PageRouter() {
    
@@ -17,6 +18,7 @@ export default function PageRouter() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/dealers" element={<DealersPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             </Routes>
       </>
 

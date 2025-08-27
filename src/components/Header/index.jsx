@@ -1,11 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const navItems = [
+    ["Products", "/products"],
+    ["About", "/about"],
+    ["FAQ", "/faq"],
+    ["Dealers", "/dealers"],
+    ["Contact", "/contact"],
+  ];
+
   return (
-    <header className="w-full max-w-[1200px] mx-auto ">
+    <header className="w-full max-w-[1200px] mx-auto">
       {/* Top Bar */}
       <div className="text-sm py-3 lg:py-4">
         <div className="flex flex-wrap justify-between items-center">
@@ -25,7 +33,7 @@ export default function Header() {
             <span className="hidden sm:inline text-gray/20">/</span>
             <Link
               to="mailto:info@diamondwarrantycorp.com"
-              className="hidden sm:inline  text-gray/40 hover:text-gray/60 transition"
+              className="hidden sm:inline text-gray/40 hover:text-gray/60 transition"
             >
               info@diamondwarrantycorp.com
             </Link>
@@ -81,27 +89,27 @@ export default function Header() {
                 ></path>
               </svg>
             </div>
-            <div className="text-xl lg:text-2xl  tracking-tighter leading-none">
+            <div className="text-xl lg:text-2xl tracking-tighter leading-none">
               Diamond Warranty
             </div>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6 lg:gap-8">
-            {[
-              ["Products", "/products"],
-              ["About", "/about"],
-              ["FAQ", "/faq"],
-              ["Dealers", "/dealers"],
-              ["Contact", "/contact"],
-            ].map(([label, href]) => (
-              <Link
+            {navItems.map(([label, href]) => (
+              <NavLink
                 key={href}
                 to={href}
-                className="text-base  lg:text-xl tracking-tight text-white transition-all duration-100 active:scale-[0.98] focus:scale-100 opacity-60 hover:opacity-100"
+                className={({ isActive }) =>
+                  `text-base lg:text-xl tracking-tight transition-all duration-100 active:scale-[0.98] focus:scale-100 ${
+                    isActive
+                      ? "opacity-100 "
+                      : "opacity-60 hover:opacity-100"
+                  }`
+                }
               >
                 {label}
-              </Link>
+              </NavLink>
             ))}
           </div>
 
@@ -130,20 +138,20 @@ export default function Header() {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden px-4 py-2">
-            {[
-              ["Products", "/products"],
-              ["About", "/about"],
-              ["FAQ", "/faq"],
-              ["Dealers", "/dealers"],
-              ["Contact", "/contact"],
-            ].map(([label, href]) => (
-              <Link
+            {navItems.map(([label, href]) => (
+              <NavLink
                 key={href}
                 to={href}
-                className="block py-2 bg-white/10 text-white p-3 mb-2 hover:bg-white/20 rounded-md"
+                className={({ isActive }) =>
+                  `block py-2 p-3 mb-2 rounded-md transition ${
+                    isActive
+                      ? "bg-white/20 text-white "
+                      : "bg-white/10 text-white hover:bg-white/20"
+                  }`
+                }
               >
                 {label}
-              </Link>
+              </NavLink>
             ))}
           </div>
         )}
