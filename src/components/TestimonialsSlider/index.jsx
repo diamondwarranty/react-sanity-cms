@@ -40,7 +40,7 @@ export default function TestimonialSlider() {
 
   const startAutoSlide = () => {
     stopAutoSlide();
-    autoplayRef.current = setInterval(() => slide("next"), 3000);
+    autoplayRef.current = setInterval(() => slide("next"), 5000);
   };
 
   const stopAutoSlide = () => {
@@ -105,7 +105,7 @@ export default function TestimonialSlider() {
           <p className="tracking-tight text-base lg:text-lg text-gray/60 font-serif">
             {item.text}
           </p>
-          <h6 className="tracking-tighter text-md lg:text-lg font-semibold text-gray/80">
+          <h6 className="tracking-tighter font-lexend text-md lg:text-lg font-semibold text-gray/80">
             {item.author}
           </h6>
         </div>

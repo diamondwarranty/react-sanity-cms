@@ -9,39 +9,39 @@ export default function Header() {
       {/* Top Bar */}
       <div className="text-sm py-3 lg:py-4">
         <div className="flex flex-wrap justify-between items-center">
-          <div className="flex items-center gap-2 lg:gap-4 font-medium">
+          <div className="flex font-lexend items-center gap-2 lg:gap-4">
             <Link
               to="/contact"
-              className=" text-gray-400 hover:text-gray-600 transition sm:hidden"
+              className=" text-gray/40 hover:text-gray/60 transition sm:hidden"
             >
               Contact
             </Link>
             <Link
               to="tel:1-800-384-5023"
-              className="hidden sm:inline text-gray-400 hover:text-gray-600 transition"
+              className="hidden sm:inline text-gray/40 hover:text-gray/60 transition"
             >
               1-800-384-5023
             </Link>
-            <span className="hidden sm:inline text-gray-200">/</span>
+            <span className="hidden sm:inline text-gray/20">/</span>
             <Link
               to="mailto:info@diamondwarrantycorp.com"
-              className="hidden sm:inline  text-gray-400 hover:text-gray-600 transition"
+              className="hidden sm:inline  text-gray/40 hover:text-gray/60 transition"
             >
               info@diamondwarrantycorp.com
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 lg:gap-4 font-medium">
+          <div className="flex items-center gap-2 lg:gap-4 font-lexend">
             <Link
               to="/claim"
-              className="whitespace-nowrap text-gray-400 hover:text-gray-600 transition"
+              className="whitespace-nowrap text-gray/40 hover:text-gray/60 transition"
             >
               Start a claim
             </Link>
             <span className="text-gray-200">/</span>
             <Link
               to="https://portal.diamondwarrantycorp.com"
-              className="whitespace-nowrap text-gray-400 hover:text-gray-600 transition"
+              className="whitespace-nowrap text-gray/40 hover:text-gray/60 transition"
             >
               Dealer login
             </Link>
@@ -51,7 +51,7 @@ export default function Header() {
 
       {/* Main Nav */}
       <div className="w-full md:h-[80px] lg:h-[100px] text-white bg-gradient-to-r from-[#1339FF] to-[#001999] rounded-2xl">
-        <nav className="h-full flex justify-between items-center py-4 px-6 md:px-8 lg:px-12">
+        <nav className="h-full flex font-lexend justify-between items-center py-4 px-6 md:px-8 lg:px-12">
           {/* Logo */}
           <Link
             to="/"
@@ -81,7 +81,7 @@ export default function Header() {
                 ></path>
               </svg>
             </div>
-            <div className="text-xl lg:text-2xl font-medium tracking-tighter leading-none">
+            <div className="text-xl lg:text-2xl  tracking-tighter leading-none">
               Diamond Warranty
             </div>
           </Link>
@@ -98,7 +98,7 @@ export default function Header() {
               <Link
                 key={href}
                 to={href}
-                className="text-base font-medium lg:text-xl tracking-tight text-white transition-all duration-100 active:scale-[0.98] focus:scale-100 opacity-60 hover:opacity-100"
+                className="text-base  lg:text-xl tracking-tight text-white transition-all duration-100 active:scale-[0.98] focus:scale-100 opacity-60 hover:opacity-100"
               >
                 {label}
               </Link>

@@ -32,7 +32,7 @@ export default function StickyHeader() {
         showHeader ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="w-full h-full mx-auto flex justify-between items-center bg-white backdrop-blur-md  ring-1 ring-gray-200 rounded-xl p-4 sm:px-6 lg:px-8">
+      <nav className="w-full h-full mx-auto flex justify-between items-center bg-white backdrop-blur-md  ring-1 ring-gray-200 rounded-xl p-4 sm:px-6 font-lexend lg:px-8">
         {/* Logo */}
         <Link
           to="/"

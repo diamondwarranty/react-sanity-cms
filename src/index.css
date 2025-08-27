@@ -5,6 +5,7 @@
 @theme {
   --color-primary: #001999;
   --color-secondary: #1339FF ;
+  --color-gray : #101010;
 }
 /* Custom font families */
 .font-lexend {
