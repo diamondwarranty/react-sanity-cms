@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const FooterSection = () => {
   return (
     <div className="w-full bg-white mt-section mb-12">
       <footer className=" font-lexend mx-auto">
@@ -86,4 +86,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterSection;

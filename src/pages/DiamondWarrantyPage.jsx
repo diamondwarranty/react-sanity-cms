@@ -5,7 +5,7 @@ import WhiteBtn from '../components/WhiteBtn';
 import StickyHeader from '../components/StickyHeader';
 import TestimonialsSlider from '../components/TestimonialsSlider';
 import BenefitsSection from '../components/BenifitSection';
-import Footer from '../components/footer';
+import FooterSection from '../components/FooterSection';
 
 const DiamondWarrantyPage = () => {
   
@@ -128,7 +128,7 @@ const DiamondWarrantyPage = () => {
       </section>
 
       {/* Footer */}
-    <Footer />
+    <FooterSection />
     </div>
    </div>
   );
