@@ -35,7 +35,7 @@ const benefitsData = [
   },
   {
     id: 5,
-    image: "/images/Antrust.webp",
+    image: "/images/Insurance.png",
     alt: "100% Fully Insured",
     title: "100% Fully Insured",
     description:
