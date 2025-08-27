@@ -7,12 +7,13 @@ import DealersPage from '../pages/DealersPage'
 import AboutPage from '../pages/AboutPage'
 import DiamondWarrantyPage from '../pages/DiamondWarrantyPage'
 import ContactPage from '../pages/ContactPage'
+import ScrollToTop from '../components/scrolltop'
 
 export default function PageRouter() {
    
     return (
       <>
-     
+   <ScrollToTop />
         <Routes>
             <Route path="/" element={<DiamondWarrantyPage />} />
             <Route path="/products" element={<ProductsPage />} />

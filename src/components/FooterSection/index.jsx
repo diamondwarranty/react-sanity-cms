@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FooterSection = () => {
   return (
@@ -8,7 +9,7 @@ const FooterSection = () => {
         <div className="w-full md:h-[80px] lg:h-[120px] text-white bg-[#1339ff1a] rounded-2xl">
           <nav className="h-full flex flex-col md:flex-row justify-between items-center gap-2 py-4 px-6 md:px-8 lg:px-12">
             {/* Logo + Text */}
-            <a href="/" className="flex items-center text-[#1339FF]">
+            <Link to="/" className="flex items-center text-[#1339FF]">
               <div className="size-6 md:size-9 mr-2 lg:mr-3 -mb-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@ const FooterSection = () => {
               <div className="text-xl text-[#1339FF] lg:text-2xl font-regular tracking-tighter leading-none">
                 Diamond Warranty
               </div>
-            </a>
+            </Link>
 
             {/* Right Text */}
             <p className="text-[#1339ff80] text-xl lg:text-2xl font-light tracking-tighter leading-none">
