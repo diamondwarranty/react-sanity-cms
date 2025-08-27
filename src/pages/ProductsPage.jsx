@@ -9,7 +9,7 @@ import ProductCard from '../components/ProductCard'
 
 export default function ProductsPage() {
   return (
-   <div className="min-h-screen bg-white lg:px-8  px-6">
+   <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}
         <div className="relative  bg-white">
           {/* Background Image */}
@@ -25,7 +25,7 @@ export default function ProductsPage() {
               
               {/* Rating */}
               <p className="tracking-tight text-sm lg:text-base text-[#001999] font-lexend font-medium">
-                Rated 4.8 / 5 by 2,392 customers
+                Rated 3.3 / 5 by 117 customers
               </p>
               
               {/* Headline */}
@@ -67,7 +67,7 @@ export default function ProductsPage() {
       <div className="border-t-2 border-secondary/5 pt-[96px]">
         <div className="max-w-[700px] lg:ml-28">
           {/* Heading */}
-         <h2 className="inline-block tracking-tighter text-4xl  lg:text-6xl font-lexend font-bold  pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1339FF] to-[#001999]">
+         <h2 className="inline-block tracking-tighter text-4xl  lg:text-6xl font-lexend font-bold  pb-4 text-transparent bg-clip-text bg-gradient-to-r  from-[#1339FF] to-[#001999]">
   Dealership Partnerships
 </h2>
 

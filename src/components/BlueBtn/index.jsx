@@ -5,7 +5,7 @@ export default function BlueBtn({link, text}) {
   return (
     <Link
           to={link}
-          className="inline-flex justify-center items-center px-6 py-4 rounded-md text-lg lg:text-xl font-lexend font-bold tracking-tight transition-all duration-100 active:enabled:scale-[0.98] bg-[#1339FF] text-white hover:enabled:bg-[#1339FF]/80"
+          className="inline-flex font-lexend justify-center items-center px-4 py-3 lg:px-6 lg:py-4 rounded-md text-base lg:text-xl text-center font-bold tracking-tight transition-all duration-100 active:enabled:scale-[0.98] focus:enabled:scale-100 bg-primary text-white hover:enabled:bg-primary/80"
         >
          { text}
         </Link>

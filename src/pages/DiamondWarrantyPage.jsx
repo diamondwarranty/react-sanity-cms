@@ -11,7 +11,7 @@ import BottomSection from '../components/BottomSection';
 const DiamondWarrantyPage = () => {
   
   return (
-    <div className="min-h-screen bg-white lg:px-8  px-6">
+    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
       {/* Hero Section */}
       <div className="relative  bg-white">
         {/* Background Image */}
@@ -28,11 +28,11 @@ const DiamondWarrantyPage = () => {
       
       {/* Rating */}
       <p className="tracking-tight text-sm lg:text-base text-[#001999] font-lexend font-medium">
-        Rated 4.8 / 5 by 2,392 customers
+       Rated 3.3 / 5 by 117 customers
       </p>
       
       {/* Headline */}
-     <h1 className="inline-block tracking-tighter text-5xl  lg:text-7xl font-lexend font-bold uppercase pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1339FF] to-[#001999]">
+     <h1 className="inline-block tracking-tighter text-5xl text-balance  lg:text-7xl font-lexend font-bold uppercase pb-2 text-transparent bg-clip-text max-lg:text-center bg-gradient-to-r from-[#1339FF] to-[#001999]">
   Your Vehicle's Best Friend.
 </h1>
 

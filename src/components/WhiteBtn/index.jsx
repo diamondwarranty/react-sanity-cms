@@ -6,7 +6,7 @@ export default function WhiteBtn({link, text}) {
      
         <Link
           to={link}
-          className="inline-flex justify-center items-center px-6 py-4 rounded-md text-lg lg:text-xl font-lexend font-bold tracking-tight transition-all duration-100 active:enabled:scale-[0.98] bg-transparent text-[#1339FF] ring-2 ring-inset ring-[#1339FF] hover:enabled:text-[#1339FF]/80 hover:enabled:ring-[#1339FF]/80"
+          className="inline-flex font-lexend justify-center items-center px-4 py-3 lg:px-6 lg:py-4 rounded-md text-base lg:text-xl text-center font-bold tracking-tight transition-all duration-100 active:enabled:scale-[0.98] focus:enabled:scale-100 bg-transparent text-primary ring-2 ring-inset ring-primary hover:enabled:text-primary/80 hover:enabled:ring-primary/80"
         >
             { text}
         </Link>
