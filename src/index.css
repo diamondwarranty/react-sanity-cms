@@ -2,7 +2,10 @@
 
 @import "tailwindcss";
 
-
+@theme {
+  --color-primary: #001999;
+  --color-secondary: #1339FF ;
+}
 /* Custom font families */
 .font-lexend {
   font-family: 'Lexend', -apple-system, Roboto, Helvetica, sans-serif;
@@ -11,9 +14,9 @@
 .font-source-serif {
   font-family: 'Source Serif Pro', -apple-system, Roboto, Helvetica, sans-serif;
 }
-
-.body {
+body {
   @apply bg-white text-gray-800;
-  max-width: 1440px;
+  max-width: 1200px;
+  margin: auto;
   
 }
