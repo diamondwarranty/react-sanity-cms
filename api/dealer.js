@@ -4,27 +4,32 @@ import fs from "fs";
 
 export const config = {
   api: {
-    bodyParser: false, // we use formidable
+    bodyParser: false,
   },
 };
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+function parseForm(req) {
+  const form = formidable({ multiples: true });
+  return new Promise((resolve, reject) => {
+    form.parse(req, (err, fields, files) => {
+      if (err) reject(err);
+      else resolve({ fields, files });
+    });
+  });
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const form = formidable({ multiples: true });
-
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      return res.status(500).json({ error: "Error parsing form" });
-    }
-
+  try {
+    const { fields, files } = await parseForm(req);
     const { name, email, phone } = fields;
 
-    // Prepare attachments
+    // Ensure attachments
     let attachments = [];
     if (files.files) {
       const fileArray = Array.isArray(files.files) ? files.files : [files.files];
@@ -34,23 +39,22 @@ export default async function handler(req, res) {
       }));
     }
 
-    try {
-      await resend.emails.send({
-        from: "Dealer Form <onboarding@yourdomain.com>",
-        to: "fizaashafique@gmail.com", // change to your email
-        subject: "New Dealer Application",
-        html: `
-          <h2>Dealer Application Submitted</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-        `,
-        attachments,
-      });
+    await resend.emails.send({
+      from: "Dealer Form <onboarding@yourdomain.com>", // Must be verified in Resend
+      to: "fizaashafique@gmail.com",
+      subject: "New Dealer Application",
+      html: `
+        <h2>Dealer Application Submitted</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+      `,
+      attachments,
+    });
 
-      return res.status(200).json({ success: true });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
-  });
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("❌ Dealer API error:", error);
+    return res.status(500).json({ error: error.message });
+  }
 }
