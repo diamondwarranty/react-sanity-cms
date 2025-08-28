@@ -9,10 +9,10 @@ const LogoSection = () => {
       height: 36,
     },
     {
-      src: "/images/IPA.png",
+      src: "/images/DAC.png",
       alt: "AmTrust",
-      width: 430,
-      height: 100,
+      width: 270,
+      height: 36,
     },
   ];
 

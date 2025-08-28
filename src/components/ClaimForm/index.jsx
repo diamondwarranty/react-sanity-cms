@@ -335,7 +335,7 @@ export default function ClaimForm() {
               onChange={handleChange}
               rows="3"
              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300
-         shadow-sm ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+        ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.customerComplaint && <p className="text-red-500 text-xs">{errors.customerComplaint}</p>}
           </div>
@@ -352,7 +352,7 @@ export default function ClaimForm() {
               onChange={handleChange}
               rows="3"
              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300
-         shadow-sm ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+          ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.estimate && <p className="text-red-500 text-xs">{errors.estimate}</p>}
           </div>
