@@ -48,7 +48,7 @@ export default function Header() {
             </Link>
             <span className="text-gray-200">/</span>
             <Link
-              to="/login"
+              to="http://diamondwarranty.tecassured.com/" target="_blank" rel="noopener noreferrer"
               className="whitespace-nowrap text-gray/40 hover:text-gray/60 transition"
             >
               Dealer login

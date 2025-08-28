@@ -10,7 +10,7 @@ import BottomSection from '../components/BottomSection';
 import { UseTitle } from '../components/useTitle';
 
 const DiamondWarrantyPage = () => {
-  UseTitle("Diamond Warranty");
+  
   return (
     <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
       {/* Hero Section */}
