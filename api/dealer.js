@@ -31,13 +31,15 @@ export default async function handler(req, res) {
 
     // Ensure attachments
     let attachments = [];
-    if (files.files) {
-      const fileArray = Array.isArray(files.files) ? files.files : [files.files];
-      attachments = fileArray.map((file) => ({
-        filename: file.originalFilename,
-        content: fs.readFileSync(file.filepath).toString("base64"),
-      }));
-    }
+if (files.files) {
+  const fileArray = Array.isArray(files.files) ? files.files : [files.files];
+  attachments = fileArray.map((file) => ({
+    filename: file.originalFilename,
+    type: file.mimetype, // include mime type
+    content: fs.readFileSync(file.filepath).toString("base64"),
+  }));
+}
+
 
     await resend.emails.send({
       from: "Dealer Form <onboarding@resend.dev>", // Must be verified in Resend

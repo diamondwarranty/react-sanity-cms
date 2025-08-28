@@ -57,7 +57,7 @@ export default function DealerForm() {
 
       if (formData.files) {
         for (let i = 0; i < formData.files.length; i++) {
-          formPayload.append("files[]", formData.files[i]);
+          formPayload.append("files", formData.files[i]);
         }
       }
 
