@@ -7,6 +7,7 @@ import BlueBtn from '../components/BlueBtn'
 import WhiteBtn from '../components/WhiteBtn'
 import ProductCard from '../components/ProductCard'
 import LogoSection from '../components/LogoSection'
+import { UseTitle } from '../components/useTitle'
 
 const aboutData = [
   {
@@ -27,6 +28,7 @@ const aboutData = [
   }, 
 ]
 export default function AboutPage() {
+  UseTitle("About");
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}

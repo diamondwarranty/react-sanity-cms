@@ -8,8 +8,10 @@ import WhiteBtn from '../components/WhiteBtn'
 import ProductCard from '../components/ProductCard'
 import ContactSection from '../components/ContactCards'
 import ContactForm from '../components/ContactForm'
+import { UseTitle } from '../components/useTitle'
 
 export default function ContactPage() {
+  UseTitle("Contact");
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}

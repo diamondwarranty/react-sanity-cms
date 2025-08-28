@@ -9,8 +9,10 @@ import ProductCard from '../components/ProductCard'
 import DownloadForms from '../components/DownloadForms'
 import InputField from '../components/InputField/index.jsx'
 import DealerForm from '../components/DealerForm/index.jsx'
+import { UseTitle } from '../components/useTitle/index.jsx'
 
 export default function DealersPage() {
+  UseTitle("Dealers");
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}

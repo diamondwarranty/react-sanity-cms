@@ -7,6 +7,7 @@ import BlueBtn from '../components/BlueBtn'
 import WhiteBtn from '../components/WhiteBtn'
 import ProductCard from '../components/ProductCard'
 import DownloadForms from '../components/DownloadForms'
+import { UseTitle } from '../components/useTitle'
 
 
   const faqs = [
@@ -33,6 +34,7 @@ import DownloadForms from '../components/DownloadForms'
   ];
 
 export default function FaqPage() {
+  UseTitle("FAQ");
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}

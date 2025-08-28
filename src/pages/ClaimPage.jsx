@@ -9,8 +9,10 @@ import ProductCard from '../components/ProductCard'
 import ContactSection from '../components/ContactCards'
 import ContactForm from '../components/ContactForm'
 import ClaimForm from '../components/ClaimForm'
+import { UseTitle } from '../components/useTitle'
 
 export default function ClaimPage() {
+  UseTitle("Start a Claim");
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}

@@ -3,9 +3,11 @@ import FooterSection from '../components/FooterSection'
 import BottomSection from '../components/BottomSection'
 import Header from '../components/Header'
 import StickyHeader from '../components/StickyHeader'
+import { UseTitle } from '../components/useTitle'
 
 
 export default function TermsPage() {
+  UseTitle("Terms and Conditions");
 
      const agreementPoints = [
     "Dealer agrees to follow the proper procedures issued by DWC on all Forms and Agreements supplied by DWC to the Dealer and to Fax / Email the completed Agreement forms to DWC at the time of sale without delay.",
