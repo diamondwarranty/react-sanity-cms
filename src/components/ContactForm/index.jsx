@@ -17,7 +17,7 @@ const InputField = ({ label, type, name, value, onChange, error, required, rows,
         rows={rows || 3}
         className={`w-full block p-2 lg:p-3 mt-1 rounded-md border ${
           error ? "border-red-500" : "border-gray-300"
-        } shadow-sm ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500`}
+        }  ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500`}
       />
     ) : (
       <input
