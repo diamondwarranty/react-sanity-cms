@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     }
 
     await resend.emails.send({
-      from: "Dealer Form <onboarding@yourdomain.com>", // Must be verified in Resend
+      from: "Dealer Form <onboarding@resend.dev>", // Must be verified in Resend
       to: "fizaashafique@gmail.com",
       subject: "New Dealer Application",
       html: `
