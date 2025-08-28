@@ -53,9 +53,26 @@ export default function ClaimForm() {
           </h5>
 
           {/* Render Details fields */}
-          {claimFields.slice(13).map((field, idx) => (
-            <InputField key={idx} {...field} className="lg:col-span-3" />
-          ))}
+        {claimFields.slice(13).map((field, idx) => (
+  <div 
+    key={idx} 
+    className="w-full font-lexend flex flex-col lg:gap-1 col-span-1 lg:col-span-3"
+  >
+    <label
+      htmlFor={field.name}
+      className="block relative text-sm lg:text-base text-gray/80 font-medium"
+    >
+      {field.label}
+    </label>
+    <textarea
+      id={field.name}
+      name={field.name}
+      required={field.required}
+      rows={field.rows || 3}
+      className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+    />
+  </div>
+))}
 
           <button
             type="submit"

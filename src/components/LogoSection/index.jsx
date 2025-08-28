@@ -11,8 +11,8 @@ const LogoSection = () => {
     {
       src: "/images/IPA.png",
       alt: "AmTrust",
-      width: 230,
-      height: 54,
+      width: 430,
+      height: 100,
     },
   ];
 
@@ -21,7 +21,7 @@ const LogoSection = () => {
       {logos.map((logo, idx) => (
         <div
           key={idx}
-          className="w-full h-[140px] p-10 bg-white/50 border border-secondary/20 rounded-lg"
+          className="w-full h-[140px] p-5 bg-white/50 border border-secondary/20 rounded-lg"
         >
           <img
             src={logo.src}

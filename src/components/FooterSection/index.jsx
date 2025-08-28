@@ -73,12 +73,12 @@ const FooterSection = () => {
               <p className="text-gray/40">© Diamond Warranty Corp.</p>
             </div>
             <div className="flex items-center gap-2 lg:gap-4">
-              <a
-                href="/terms"
+              <Link
+                to="/terms"
                 className="whitespace-nowrap text-gray/40 hover:text-gray/60 transition"
               >
                 Terms and Conditions
-              </a>
+              </Link>
             </div>
           </div>
         </div>

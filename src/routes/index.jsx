@@ -10,7 +10,7 @@ import ContactPage from '../pages/ContactPage'
 import ScrollToTop from '../components/scrolltop'
 import FaqPage from '../pages/FaqPage'
 import ClaimPage from '../pages/ClaimPage'
-import LoginPage from '../pages/LoginPage'
+import TermsPage from '../pages/TermsPage'
 
 export default function PageRouter() {
    
@@ -25,7 +25,8 @@ export default function PageRouter() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/claim" element={<ClaimPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+        
 
 
             </Routes>
