@@ -241,7 +241,7 @@ const plans = [
     
     sections: [
       {
-        title: "Includes powertrain components and...",
+        title: "",
         items: [
           "Powertrain Plus Engine", "Fluids & Filters (Covered in conjunction with a covered component.)", "OEM Single & Twin Turbo/Supercharger (Surcharge Applies) All internally lubricated parts contained within the turbo/supercharger.", "Automatic Transmission", "Manual Transmission", "Rear Axle Assembly", "4x4/AWD (included)", "24/7 Roadside Assistance (included)"
 
