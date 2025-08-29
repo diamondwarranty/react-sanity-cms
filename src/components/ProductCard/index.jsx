@@ -155,7 +155,7 @@ const plans = [
     
     sections: [
       {
-        title: "Includes powertrain components and...",
+        title: "INCLUDES POWERTRAIN AND PLUS COMPONENTS,  and...",
         items: [
           "Enhanced Sensor Package (included)", "Enhanced Fuel Delivery System", "Enhanced Engine", "Enhanced Electrical (PCM)", "Enhanced Air Conditioning", "Heating & Enhanced Cooling", "Enhanced Automatic Transmission", "Enhanced ABS & Brakes System", "Enhanced Suspension", "Exterior", "Rental Car Reimbursement", "Diagnostics (maximum of one hour)", "24/7 Roadside Assistance & Towing (included)", "Trip Interruption (included) ($200 maximum benefit)"
 

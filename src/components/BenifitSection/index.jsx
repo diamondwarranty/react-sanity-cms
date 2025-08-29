@@ -35,7 +35,7 @@ const benefitsData = [
   },
   {
     id: 5,
-    image: "/images/Insurance.png",
+    image: "/images/ratted.png",
     alt: "100% Fully Insured",
     title: "100% Fully Insured",
     description:

@@ -19,5 +19,17 @@ body {
   @apply bg-white text-gray-800;
   max-width: 1200px;
   margin: auto;
-  
+
+}
+
+/* Since 2006 Component Styles */
+.since-2006-bg-year {
+  font-family: 'Lexend', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 700;
+  opacity: 0.05;
+  color: #111;
+  position: absolute;
+  pointer-events: none;
+  text-align: center;
+  width: 100%;
 }

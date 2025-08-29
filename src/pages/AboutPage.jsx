@@ -8,6 +8,7 @@ import WhiteBtn from '../components/WhiteBtn'
 import ProductCard from '../components/ProductCard'
 import LogoSection from '../components/LogoSection'
 import { UseTitle } from '../components/useTitle'
+import Since2006 from '../components/Since2006'
 
 const aboutData = [
   {
@@ -76,6 +77,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        
  <LogoSection />
 
          <div className="flex flex-col gap-12">
