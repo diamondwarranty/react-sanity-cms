@@ -112,7 +112,7 @@ export default function ClaimForm() {
               name="customerName"
               value={formData.customerName}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.customerName && <p className="text-red-500 text-xs">{errors.customerName}</p>}
           </div>
@@ -128,7 +128,7 @@ export default function ClaimForm() {
               name="vin"
               value={formData.vin}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.vin && <p className="text-red-500 text-xs">{errors.vin}</p>}
           </div>
@@ -141,7 +141,7 @@ export default function ClaimForm() {
               name="contractNumber"
               value={formData.contractNumber}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.contractNumber && <p className="text-red-500 text-xs">{errors.contractNumber}</p>}
           </div>
@@ -158,7 +158,7 @@ export default function ClaimForm() {
               min="0"
               value={formData.mileage}
               onChange={handleChange}
-               className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+               className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.mileage && <p className="text-red-500 text-xs">{errors.mileage}</p>}
           </div>
@@ -171,7 +171,7 @@ export default function ClaimForm() {
               name="vehicleTowed"
               value={formData.vehicleTowed}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             >
               <option value="">Select</option>
               <option value="Yes">Yes</option>
@@ -198,7 +198,7 @@ export default function ClaimForm() {
               name="repairShopName"
               value={formData.repairShopName}
               onChange={handleChange}
-            className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+            className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.repairShopName && <p className="text-red-500 text-xs">{errors.repairShopName}</p>}
           </div>
@@ -216,7 +216,7 @@ export default function ClaimForm() {
               name="streetAddress"
               value={formData.streetAddress}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.streetAddress && <p className="text-red-500 text-xs">{errors.streetAddress}</p>}
           </div>
@@ -232,7 +232,7 @@ export default function ClaimForm() {
               name="city"
               value={formData.city}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 border rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.city && <p className="text-red-500 text-xs">{errors.city}</p>}
           </div>
@@ -248,7 +248,7 @@ export default function ClaimForm() {
               name="state"
               value={formData.state}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 border rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.state && <p className="text-red-500 text-xs">{errors.state}</p>}
           </div>
@@ -264,7 +264,7 @@ export default function ClaimForm() {
               name="zip"
               value={formData.zip}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 border rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.zip && <p className="text-red-500 text-xs">{errors.zip}</p>}
           </div>
@@ -280,7 +280,7 @@ export default function ClaimForm() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 border rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
           </div>
@@ -294,7 +294,7 @@ export default function ClaimForm() {
               name="fax"
               value={formData.fax}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 border rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.fax && <p className="text-red-500 text-xs">{errors.fax}</p>}
           </div>
@@ -310,7 +310,7 @@ export default function ClaimForm() {
               name="contactName"
               value={formData.contactName}
               onChange={handleChange}
-              className="w-full block p-2 lg:p-3 mt-1 rounded-md border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full block p-2 lg:p-3 mt-1 rounded-md border border-gray-300 ring-1 ring-inset ring-gray/10 text-sm md:text-base text-gray/80 focus:border-indigo-500 focus:ring-indigo-500"
             />
             {errors.contactName && <p className="text-red-500 text-xs">{errors.contactName}</p>}
           </div>
