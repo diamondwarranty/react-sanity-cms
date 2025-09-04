@@ -10,8 +10,36 @@ import ContactSection from '../components/ContactCards'
 import ContactForm from '../components/ContactForm'
 import { UseTitle } from '../components/useTitle'
 
+import { useEffect, useState } from 'react';
+import client from '../client'
+
 export default function ContactPage() {
   UseTitle("Contact");
+  const [contactData, setContactData] = useState(null);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "contactPage"][0]{
+          title,
+          hero {
+            headline,
+            description,
+            image {
+              asset->{
+                url
+              }
+            }
+          },
+          contactCards
+        }`
+      )
+      .then((data) => setContactData(data))
+      .catch(console.error);
+  }, []);
+
+  if (!contactData) return <div>Loading...</div>;
+
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {/* Hero Section */}
@@ -30,20 +58,14 @@ export default function ContactPage() {
             
               
               {/* Headline */}
-             <h1 className="inline-block tracking-tighter text-5xl  lg:text-7xl font-lexend font-bold uppercase pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1339FF] to-[#001999]">
-       Contact
-        </h1>
-        
+              <h1 className="inline-block tracking-tighter text-5xl lg:text-7xl font-lexend font-bold uppercase pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1339FF] to-[#001999]">
+                {contactData.hero.headline}
+              </h1>
               
               {/* Description */}
-              <p className="max-w-[600px] lg:mx-0 mx-auto  tracking-tight text-xl lg:text-2xl leading-[160%] font-source-serif text-[rgba(16,16,16,0.6)]">
-              Have questions about our coverage plans, or need further assistance, we’re here to help. Use the form below to reach out to us, or call us for immediate support.
-
-
+              <p className="max-w-[600px] lg:mx-0 mx-auto tracking-tight text-xl lg:text-2xl leading-[160%] font-source-serif text-[rgba(16,16,16,0.6)]">
+                {contactData.hero.description}
               </p>
-              
-              {/* Buttons */}
-            
             </div>
         
             {/* Image */}
@@ -62,13 +84,10 @@ export default function ContactPage() {
           </div>
         </section>
 
-<ContactSection />
-<ContactForm />
-
-
- 
-        <FooterSection/>
-        </div>
-        </div>
-  )
+        <ContactSection contactCards={contactData.contactCards} />
+        <ContactForm />
+        <FooterSection />
+      </div>
+    </div>
+  );
 }

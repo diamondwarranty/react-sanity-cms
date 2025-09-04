@@ -1,7 +1,7 @@
 import React from "react";
 
 // Reusable Card Component
-const PlanCard = ({ title, description, sections, terms, footnotes }) => {
+const PlanCard = ({ title, description, sections, terms, footnotes = [] }) => {
   return (
     <div className="flex w-full rounded-2xl border-2 border-secondary/15 bg-gradient-to-b from-secondary/5 to-secondary/0">
       <div className="w-full flex flex-col gap-6 lg:gap-8 p-6 lg:p-10">
@@ -59,7 +59,7 @@ const PlanCard = ({ title, description, sections, terms, footnotes }) => {
 
         {/* Footnotes */}
         <div>
-          {footnotes.map((note, idx) => (
+          {footnotes?.map((note, idx) => (
             <p
               key={idx}
               className={`tracking-tight font-lexend text-sm lg:text-base text-gray/60 lg:mb-4 mb-1 ${
@@ -75,202 +75,203 @@ const PlanCard = ({ title, description, sections, terms, footnotes }) => {
   );
 };
 
-// Data
-const plans = [
-  {
-    title: "Powertrain",
-    description:
-      "Our Powertrain plan offers limited liability coverage for essential vehicle components, ensuring peace of mind with protection for your engine, transmission, and drive axle assemblies.",
-    sections: [
-      {
-        title: "Included components",
-        items: [
-          "Engine (Gas)",
-          "Automatic Transmission",
-          "Manual Transmission",
-          "Front Drive Axle Assembly",
-          "Rear Differential",
-          "4x4/AWD (included)",
-          "Fluids & Filters **",
-          "Seals & Gaskets **",
-          "Single Turbo-Supercharger (OEM) *",
-          "24/7 Roadside Assistance *",
-        ],
-      },
-    ],
-    terms: [
-      "3 Months/Unlimited Miles",
-      "6 Months/Unlimited Miles",
-      "12 Months/Unlimited Miles",
-    ],
-    footnotes: [
-      { text: "* Surcharge Applies" },
-      { text: "** Covered in conjunction with the failure of covered component" },
-      { text: "See contract for complete program details.", bold: true },
-    ],
-  },
-  {
-    title: "Plus",
-    description:
-      "The Plus plan builds on our Powertrain coverage, adding protection for high-tech electrical systems, fuel systems, air conditioning, and more. This comprehensive plan includes rental car reimbursement and 24/7 roadside assistance, with flexible terms ranging from 3 to 48 months.",
-    sections: [
-      {
-        title: "Includes powertrain components and...",
-        items: [
-          "Plus Sensor Package (included)",
-          "Engine",
-          "Seals & Gaskets",
-          "Fuel System",
-          "Air Conditioning (OEM)",
-          "A/C Fluids & Freon (included) *",
-          "ABS & Brakes System **",
-          "Cooling System",
-          "High Tech Electrical",
-          "Steering & Suspension",
-          "Rental Car Reimbursement",
-          "Diagnostics (maximum of one hour)",
-          "24/7 Roadside Assistance & Towing (included)",
-        ],
-      },
-    ],
-    terms: [
-      "3 Months/5,000 Miles",
-      "6 Months/9,000 Miles",
-      "12 Months/30,000 Miles",
-      "24 Months/40,000 Miles",
-      "36 Months/50,000 Miles",
-    ],
-    footnotes: [
-      {
-        text: "* In conjunction with the replacement or repair of an A/C covered component.",
-      },
-      { text: "** Exclusions are: rotors, drums, pads & linings." },
-      { text: "See contract for complete program details.", bold: true },
-    ],
-  },
-  {
-     title: "Enhanced",
-    description:
-      "Enhanced coverage includes all the benefits of the Powertrain and Plus plans, with added protection for enhanced fuel delivery, engine, electrical systems, and more such as trip interruption coverage with plans from 12 to 48 months.",
+// // Data
+// const plans = [
+//   {
+//     title: "Powertrain",
+//     description:
+//       "Our Powertrain plan offers limited liability coverage for essential vehicle components, ensuring peace of mind with protection for your engine, transmission, and drive axle assemblies.",
+//     sections: [
+//       {
+//         title: "Included components",
+//         items: [
+//           "Engine (Gas)",
+//           "Automatic Transmission",
+//           "Manual Transmission",
+//           "Front Drive Axle Assembly",
+//           "Rear Differential",
+//           "4x4/AWD (included)",
+//           "Fluids & Filters **",
+//           "Seals & Gaskets **",
+//           "Single Turbo-Supercharger (OEM) *",
+//           "24/7 Roadside Assistance *",
+//         ],
+//       },
+//     ],
+//     terms: [
+//       "3 Months/Unlimited Miles",
+//       "6 Months/Unlimited Miles",
+//       "12 Months/Unlimited Miles",
+//     ],
+//     footnotes: [
+//       { text: "* Surcharge Applies" },
+//       { text: "** Covered in conjunction with the failure of covered component" },
+//       { text: "See contract for complete program details.", bold: true },
+//     ],
+//   },
+//   {
+//     title: "Plus",
+//     description:
+//       "The Plus plan builds on our Powertrain coverage, adding protection for high-tech electrical systems, fuel systems, air conditioning, and more. This comprehensive plan includes rental car reimbursement and 24/7 roadside assistance, with flexible terms ranging from 3 to 48 months.",
+//     sections: [
+//       {
+//         title: "Includes powertrain components and...",
+//         items: [
+//           "Plus Sensor Package (included)",
+//           "Engine",
+//           "Seals & Gaskets",
+//           "Fuel System",
+//           "Air Conditioning (OEM)",
+//           "A/C Fluids & Freon (included) *",
+//           "ABS & Brakes System **",
+//           "Cooling System",
+//           "High Tech Electrical",
+//           "Steering & Suspension",
+//           "Rental Car Reimbursement",
+//           "Diagnostics (maximum of one hour)",
+//           "24/7 Roadside Assistance & Towing (included)",
+//         ],
+//       },
+//     ],
+//     terms: [
+//       "3 Months/5,000 Miles",
+//       "6 Months/9,000 Miles",
+//       "12 Months/30,000 Miles",
+//       "24 Months/40,000 Miles",
+//       "36 Months/50,000 Miles",
+//     ],
+//     footnotes: [
+//       {
+//         text: "* In conjunction with the replacement or repair of an A/C covered component.",
+//       },
+//       { text: "** Exclusions are: rotors, drums, pads & linings." },
+//       { text: "See contract for complete program details.", bold: true },
+//     ],
+//   },
+//   {
+//      title: "Enhanced",
+//     description:
+//       "Enhanced coverage includes all the benefits of the Powertrain and Plus plans, with added protection for enhanced fuel delivery, engine, electrical systems, and more such as trip interruption coverage with plans from 12 to 48 months.",
     
-    sections: [
-      {
-        title: "INCLUDES POWERTRAIN AND PLUS COMPONENTS,  and...",
-        items: [
-          "Enhanced Sensor Package (included)", "Enhanced Fuel Delivery System", "Enhanced Engine", "Enhanced Electrical (PCM)", "Enhanced Air Conditioning", "Heating & Enhanced Cooling", "Enhanced Automatic Transmission", "Enhanced ABS & Brakes System", "Enhanced Suspension", "Exterior", "Rental Car Reimbursement", "Diagnostics (maximum of one hour)", "24/7 Roadside Assistance & Towing (included)", "Trip Interruption (included) ($200 maximum benefit)"
+//     sections: [
+//       {
+//         title: "INCLUDES POWERTRAIN AND PLUS COMPONENTS,  and...",
+//         items: [
+//           "Enhanced Sensor Package (included)", "Enhanced Fuel Delivery System", "Enhanced Engine", "Enhanced Electrical (PCM)", "Enhanced Air Conditioning", "Heating & Enhanced Cooling", "Enhanced Automatic Transmission", "Enhanced ABS & Brakes System", "Enhanced Suspension", "Exterior", "Rental Car Reimbursement", "Diagnostics (maximum of one hour)", "24/7 Roadside Assistance & Towing (included)", "Trip Interruption (included) ($200 maximum benefit)"
 
-        ],
-      },
-    ],
-    terms: [
+//         ],
+//       },
+//     ],
+//     terms: [
       
-      "12 Months/18,000 Miles",
-      "24 Months/30,000 Miles",
-      "36 Months/40,000 Miles",
-        "48 Months/50,000 Miles",
-    ],
-    footnotes: [
+//       "12 Months/18,000 Miles",
+//       "24 Months/30,000 Miles",
+//       "36 Months/40,000 Miles",
+//         "48 Months/50,000 Miles",
+//     ],
+//     footnotes: [
      
-      { text: "See contract for complete program details.", bold: true },
-    ],
-  },
-  {
-     title: "Exclusionary (Factory Wrap)",
-    description:
-      "The Exclusionary plan (Factory Wrap) provides the most comprehensive coverage, wrapping around your existing factory warranty to cover almost all OEM components and optional technology packages. Enjoy extensive roadside assistance and rental car benefits with flexible term options up to 6 years.",
+//       { text: "See contract for complete program details.", bold: true },
+//     ],
+//   },
+//   {
+//      title: "Exclusionary (Factory Wrap)",
+//     description:
+//       "The Exclusionary plan (Factory Wrap) provides the most comprehensive coverage, wrapping around your existing factory warranty to cover almost all OEM components and optional technology packages. Enjoy extensive roadside assistance and rental car benefits with flexible term options up to 6 years.",
     
-    sections: [
-      {
-        title: "OEM Optional Technology Package",
-        items: [
-          "(Surcharge Applies)", "GPS Navigation System", "Navigation display unit", "Navigation control module", "Excluded Components:"
+//     sections: [
+//       {
+//         title: "OEM Optional Technology Package",
+//         items: [
+//           "(Surcharge Applies)", "GPS Navigation System", "Navigation display unit", "Navigation control module", "Excluded Components:"
 
 
-        ],
+//         ],
        
-      },
-      {
-        title: "Excluded Components",
-        items: [
-         "Antennae",
-"Cables & Wiring Harness",
-"Phone System (Charger/Cradle, Microphone, Speakers, Mobile Phone)"
+//       },
+//       {
+//         title: "Excluded Components",
+//         items: [
+//          "Antennae",
+// "Cables & Wiring Harness",
+// "Phone System (Charger/Cradle, Microphone, Speakers, Mobile Phone)"
 
 
-        ],
+//         ],
        
-      },
-      {
-        title: "Included Benefits",
-        items: [
-        "Car Rental Program",
-"Trip Interruption ($200 Maximum Benefit)",
-"24/7 Roadside Assistance (included)"
+//       },
+//       {
+//         title: "Included Benefits",
+//         items: [
+//         "Car Rental Program",
+// "Trip Interruption ($200 Maximum Benefit)",
+// "24/7 Roadside Assistance (included)"
 
 
-        ],
+//         ],
        
-      },
-    ],
-    terms: [
+//       },
+//     ],
+//     terms: [
       
-     "1 Year or up to 100,000 Miles on your odometer",
-      "2 Year or up to 100,000 Miles on your odometer",
-      "3 Year or up to 100,000 Miles on your odometer",
-      "4 Year or up to 100,000 Miles on your odometer",
-      "5 Year or up to 100,000 Miles on your odometer",
-      "6 Year or up to 100,000 Miles on your odometer",
-    ],
-    footnotes: [
+//      "1 Year or up to 100,000 Miles on your odometer",
+//       "2 Year or up to 100,000 Miles on your odometer",
+//       "3 Year or up to 100,000 Miles on your odometer",
+//       "4 Year or up to 100,000 Miles on your odometer",
+//       "5 Year or up to 100,000 Miles on your odometer",
+//       "6 Year or up to 100,000 Miles on your odometer",
+//     ],
+//     footnotes: [
      
-     {
-        text: "* Coverage begins after original manufacturer's warranty expires either by time or miles. All factory installed components are covered except for the components and conditions listed in the EXCLUSIONS section of the contract.",
-      },
-     {
-        text: "* Surcharge Applies",
-      },
-      { text: "** Covered in conjunction with the failure of covered component" },
-      { text: "See contract for complete program details.", bold: true },
-    ],
-  },
+//      {
+//         text: "* Coverage begins after original manufacturer's warranty expires either by time or miles. All factory installed components are covered except for the components and conditions listed in the EXCLUSIONS section of the contract.",
+//       },
+//      {
+//         text: "* Surcharge Applies",
+//       },
+//       { text: "** Covered in conjunction with the failure of covered component" },
+//       { text: "See contract for complete program details.", bold: true },
+//     ],
+//   },
 
-  {
-     title: "Powertrain Plus 5/100",
-    description:
-      "The Powertrain Plus 5/100 plan extends our Powertrain coverage to 5 years or 100,000 miles, including additional benefits like 24/7 roadside assistance. This plan ensures long-term peace of mind with limited liability coverage.",
+//   {
+//      title: "Powertrain Plus 5/100",
+//     description:
+//       "The Powertrain Plus 5/100 plan extends our Powertrain coverage to 5 years or 100,000 miles, including additional benefits like 24/7 roadside assistance. This plan ensures long-term peace of mind with limited liability coverage.",
     
-    sections: [
-      {
-        title: "",
-        items: [
-          "Powertrain Plus Engine", "Fluids & Filters (Covered in conjunction with a covered component.)", "OEM Single & Twin Turbo/Supercharger (Surcharge Applies) All internally lubricated parts contained within the turbo/supercharger.", "Automatic Transmission", "Manual Transmission", "Rear Axle Assembly", "4x4/AWD (included)", "24/7 Roadside Assistance (included)"
+//     sections: [
+//       {
+//         title: "",
+//         items: [
+//           "Powertrain Plus Engine", "Fluids & Filters (Covered in conjunction with a covered component.)", "OEM Single & Twin Turbo/Supercharger (Surcharge Applies) All internally lubricated parts contained within the turbo/supercharger.", "Automatic Transmission", "Manual Transmission", "Rear Axle Assembly", "4x4/AWD (included)", "24/7 Roadside Assistance (included)"
 
 
-        ],
-      },
-    ],
-    terms: [
+//         ],
+//       },
+//     ],
+//     terms: [
       
-      "5 Years /1000 Miles",
+//       "5 Years /1000 Miles",
      
-    ],
-    footnotes: [
-      {
-        text: "* Surcharge Applies",
-      },
-      { text: "** Covered in conjunction with the failure of covered component" },
-      { text: "See contract for complete program details.", bold: true },
-    ],
-  },
-  // 🔥 You would add "Enhanced", "Exclusionary (Factory Wrap)", "Powertrain Plus 5/100" here
-];
+//     ],
+//     footnotes: [
+//       {
+//         text: "* Surcharge Applies",
+//       },
+//       { text: "** Covered in conjunction with the failure of covered component" },
+//       { text: "See contract for complete program details.", bold: true },
+//     ],
+//   },
+//   // 🔥 You would add "Enhanced", "Exclusionary (Factory Wrap)", "Powertrain Plus 5/100" here
+// ];
 
 // Wrapper Component
-const PlansSection = () => {
+const PlansSection = ({plans}) => {
+  console.log(plans, "-----plans----------");
   return (
     <section className="mb-section">
       <div className="flex flex-col gap-8">
-        {plans.map((plan, index) => (
+        {plans?.map((plan, index) => (
           <PlanCard key={index} {...plan} />
         ))}
       </div>

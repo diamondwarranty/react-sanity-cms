@@ -1,29 +1,43 @@
 import { useEffect, useRef, useState } from "react";
-
-const testimonials = [
-  { text: "As a dealer, partnering with Diamond Warranty has been a game-changer. My customers love the coverage options, and it's boosted my business.", author: "David Brown" },
-  { text: "Diamond Warranty has been a lifesaver for my business. Their coverage is comprehensive and their customer service is top-notch.", author: "John Doe" },
-  { text: "I've been using Diamond Warranty for years, and I couldn't be happier. They've always been there when I needed them.", author: "Jane Smith" },
-  { text: "The peace of mind that comes with Diamond Warranty is priceless. I highly recommend their services to anyone looking for vehicle protection.", author: "Mike Johnson" },
-  { text: "Diamond Warranty's claims process is smooth and efficient. They've made dealing with car issues so much less stressful.", author: "Sarah Williams" },
-];
+import client from "../../client";
 
 export default function TestimonialSlider() {
+  const [testimonials, setTestimonials] = useState([]);
+  const [sectionHeading, setSectionHeading] = useState("What People Say About Us");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(1);
   const sliderRef = useRef(null);
   const autoplayRef = useRef(null);
   const startX = useRef(0);
 
-  // 🔥 Responsive items per view
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "testimonialsSection"][0]{
+          sectionHeading,
+          testimonials[]{
+            testimonialText,
+            authorName
+          }
+        }`
+      )
+      .then((data) => {
+        if (data) {
+          setSectionHeading(data.sectionHeading || "What People Say About Us");
+          setTestimonials(data.testimonials || []);
+        }
+      });
+  }, []);
+
+  // Responsive items per view
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth >= 1024) {
-        setItemsPerView(3); // large screens
+        setItemsPerView(3);
       } else if (window.innerWidth >= 768) {
-        setItemsPerView(2); // medium screens
+        setItemsPerView(2);
       } else {
-        setItemsPerView(1); // small screens
+        setItemsPerView(1);
       }
     };
 
@@ -32,11 +46,11 @@ export default function TestimonialSlider() {
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, []);
 
-  // 🔥 Autoplay
+  // Autoplay
   useEffect(() => {
     startAutoSlide();
     return () => stopAutoSlide();
-  }, [currentIndex, itemsPerView]);
+  }, [currentIndex, itemsPerView, testimonials.length]);
 
   const startAutoSlide = () => {
     stopAutoSlide();
@@ -62,7 +76,7 @@ export default function TestimonialSlider() {
     }
   };
 
-  // 🔥 Touch swipe
+  // Touch swipe
   const handleTouchStart = (e) => {
     stopAutoSlide();
     startX.current = e.touches[0].clientX;
@@ -80,7 +94,7 @@ export default function TestimonialSlider() {
   return (
     <section className="mb-section flex flex-col gap-4 items-center lg:mb-[96px] md:mb-[64px] mb-[32px]">
       <h3 className="inline-block tracking-tighter text-3xl lg:text-4xl font-semibold text-gray/80">
-        What People Say About Us
+        {sectionHeading}
       </h3>
 
       <div
@@ -88,32 +102,33 @@ export default function TestimonialSlider() {
         onMouseEnter={stopAutoSlide}
         onMouseLeave={startAutoSlide}
       >
-      <div
-  ref={sliderRef}
-  className="slider flex transition-transform duration-300 ease-in-out"
-  style={{
-    transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-  }}
->
-  {testimonials.map((item, idx) => (
-    <div
-      key={idx}
-      className="slider-item flex-shrink-0 basis-full md:basis-1/3 p-4"
-    >
-      <div className="flex w-full rounded-2xl bg-secondary/5">
-        <div className="p-6 lg:p-8 flex flex-col gap-4">
-          <p className="tracking-tight text-base lg:text-lg text-gray/60 font-serif">
-            {item.text}
-          </p>
-          <h6 className="tracking-tighter font-lexend text-md lg:text-lg font-semibold text-gray/80">
-            {item.author}
-          </h6>
+        <div
+          ref={sliderRef}
+          className="slider flex transition-transform duration-300 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {testimonials.map((item, idx) => (
+            <div
+              key={idx}
+              className="slider-item flex-shrink-0 basis-full md:basis-1/3 p-4"
+            >
+              <div className="flex w-full rounded-2xl bg-secondary/5">
+                <div className="p-6 lg:p-8 flex flex-col gap-4">
+                  <p className="tracking-tight text-base lg:text-lg text-gray/60 font-serif">
+                    {item.testimonialText}
+                  </p>
+                  <h6 className="tracking-tighter font-lexend text-md lg:text-lg font-semibold text-gray/80">
+                    {item.authorName}
+                  </h6>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-  ))}
-</div>
-
 
         {/* Prev */}
         <button

@@ -1,15 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import client from '../../client';
 
 const FooterSection = () => {
+  const [footerData, setFooterData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch data from Sanity
+  useEffect(() => {
+    const query = `*[_type == "footerSection"][0]{
+      logoText,
+      logoLink,
+      rightText,
+      disclaimer,
+      copyright,
+      links[]{
+        text,
+        url
+      }
+    }`;
+
+    client
+      .fetch(query)
+      .then((data) => {
+        setFooterData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching Sanity data:', err);
+        setError('Failed to load footer data');
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!footerData) return null;
+
   return (
     <div className="w-full bg-white mt-section mb-12">
-      <footer className=" font-lexend mx-auto">
+      <footer className="font-lexend mx-auto">
         {/* Top Bar */}
         <div className="w-full md:h-[80px] lg:h-[120px] text-white bg-[#1339ff1a] rounded-2xl">
           <nav className="h-full flex flex-col md:flex-row justify-between items-center gap-2 py-4 px-6 md:px-8 lg:px-12">
             {/* Logo + Text */}
-            <Link to="/" className="flex items-center text-[#1339FF]">
+            <Link to={footerData.logoLink} className="flex items-center text-[#1339FF]">
               <div className="size-6 md:size-9 mr-2 lg:mr-3 -mb-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,50 +71,38 @@ const FooterSection = () => {
                 </svg>
               </div>
               <div className="text-xl text-[#1339FF] lg:text-2xl font-regular tracking-tighter leading-none">
-                Diamond Warranty
+                {footerData.logoText}
               </div>
             </Link>
 
             {/* Right Text */}
             <p className="text-[#1339ff80] text-xl lg:text-2xl font-light tracking-tighter leading-none">
-              PCI DSS Validated
+              {footerData.rightText}
             </p>
           </nav>
         </div>
 
         {/* Disclaimer */}
         <div className="py-4 lg:py-8 text-[10px] lg:text-xs text-center text-gray/40">
-          <p>
-            This website and associated marketing materials that link to this
-            website may use the terms "Warranty", "Extended Warranty", "After
-            Market Warranty", "Vehicle Service Contract", "Vehicle Protection
-            Plan" and "Used Car Warranty" for marketing purposes only. However,
-            per definition, automobile manufacturers are the only organizations
-            that can offer extended car warranties. All other sellers offer
-            Vehicle Service Contracts (VSCs). Diamond Warranty provides
-            mechanical repair coverage for your vehicle after the manufacturer's
-            warranty has expired. Specific Vehicle Service Contract coverage
-            differs depending upon the service contract purchased. Not available
-            in all states. Vehicle names, logos, brands, and other trademarks
-            associated with Diamond Warranty are property of their respective
-            trademark holders. Diamond Warranty is a nationwide Vehicle Service
-            Contract administrators.
-          </p>
+          <p>{footerData.disclaimer}</p>
         </div>
 
         {/* Bottom Links */}
         <div className="text-sm py-4 lg:py-8 border-t border-gray/10">
           <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-between items-center">
             <div className="flex items-center">
-              <p className="text-gray/40">© Diamond Warranty Corp.</p>
+              <p className="text-gray/40">{footerData.copyright}</p>
             </div>
             <div className="flex items-center gap-2 lg:gap-4">
-              <Link
-                to="/terms"
-                className="whitespace-nowrap text-gray/40 hover:text-gray/60 transition"
-              >
-                Terms and Conditions
-              </Link>
+              {footerData.links.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.url}
+                  className="whitespace-nowrap text-gray/40 hover:text-gray/60 transition"
+                >
+                  {link.text}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
