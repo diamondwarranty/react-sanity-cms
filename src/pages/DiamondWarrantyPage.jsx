@@ -1,39 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import BlueBtn from '../components/BlueBtn';
 import WhiteBtn from '../components/WhiteBtn';
-import StickyHeader from '../components/StickyHeader';
 import TestimonialsSlider from '../components/TestimonialsSlider';
 import BenefitsSection from '../components/BenifitSection';
 import FooterSection from '../components/FooterSection';
 import BottomSection from '../components/BottomSection';
-import { UseTitle } from '../components/useTitle';
-import client from '../client';
+import client, { getClient } from '../client';
+import SEO from '../components/SEO';
+import { fetchGlobalSeo, resolveSeo } from '../lib/seo';
 
 const DiamondWarrantyPage = () => {
   const [hero, setHero] = useState(null);
+  const [seo, setSeo] = useState(null);
+  const [preview, setPreview] = useState(false);
 
   useEffect(() => {
-    client
-    .fetch(
-      `*[_type == "hero" && _id == "heroSettings"][0]{
-        rating,
-        headline,
-        description,
-        primaryButton{ text, link },
-        secondaryButton{ text, link },
-        heroImage{
-          asset->{url},
-          alt
-        },
-        sectionContent{
-          heading,
-          description,
-          button{ text, link }
-        }
-      }`
-    )  
-    .then((data) => setHero(data));
+    const params = new URLSearchParams(window.location.search)
+    const isPreview = params.get('preview') === 'true'
+    setPreview(isPreview)
+    const c = isPreview ? getClient(true) : client
+
+    const heroQuery = `*[_type == "hero" && _id == "heroSettings"][0]{
+      rating,
+      headline,
+      description,
+      primaryButton{ text, link },
+      secondaryButton{ text, link },
+      heroImage{ asset->{url}, alt },
+      sectionContent{ heading, description, button{ text, link } }
+    }`
+
+    Promise.all([
+      c.fetch(heroQuery),
+      fetchGlobalSeo(isPreview)
+    ])
+    .then(([heroData, globalSeo]) => {
+      setHero(heroData)
+      setSeo(resolveSeo({ page: { seoTitle: heroData?.headline, seoDescription: heroData?.description }, fallback: globalSeo }))
+    })
+    .catch(console.error)
   }, []);
 
   if (!hero) {
@@ -41,13 +46,9 @@ const DiamondWarrantyPage = () => {
   }
   return (
     <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
+      {seo && <SEO title={seo.title} description={seo.description} noIndex={preview} />}
       {/* Hero Section */}
       <div className="relative  bg-white">
-        {/* Background Image */}
-       
-      <Header />
-      <StickyHeader />
-        
         {/* Hero Content */}
   <section className="lg:my-[96px] md:my-[64px] my-[32px] ">
   <div className="relative flex flex-col lg:flex-row justify-between items-stretch">

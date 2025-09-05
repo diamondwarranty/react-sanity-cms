@@ -1,7 +1,7 @@
 import React from 'react'
 import WhiteBtn from '../WhiteBtn'
 import BlueBtn from '../BlueBtn'
-import client from '../../client';
+import client, { getClient } from '../../client';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -12,17 +12,17 @@ export default function BottomSection() {
 
   // Fetch data from Sanity
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const isPreview = params.get('preview') === 'true'
+    const c = isPreview ? getClient(true) : client
+
     const query = `*[_type == "bottomSection"][0]{
       title,
       description,
-      buttons[]{
-        text,
-        link,
-        style
-      }
-    }`;
+      buttons[]{ text, link, style }
+    }`
 
-    client
+    c
       .fetch(query)
       .then((data) => {
         setSectionData(data);

@@ -1,50 +1,50 @@
 import React from 'react'
 import FooterSection from '../components/FooterSection'
 import BottomSection from '../components/BottomSection'
-import Header from '../components/Header'
-import StickyHeader from '../components/StickyHeader'
-import BlueBtn from '../components/BlueBtn'
-import WhiteBtn from '../components/WhiteBtn'
-import ProductCard from '../components/ProductCard'
 import DownloadForms from '../components/DownloadForms'
 import InputField from '../components/InputField/index.jsx'
 import DealerForm from '../components/DealerForm/index.jsx'
-import { UseTitle } from '../components/useTitle/index.jsx'
 import { useState, useEffect } from 'react';
-import client from '../client.js'
+import client, { getClient } from '../client.js'
+import SEO from '../components/SEO';
+import { fetchGlobalSeo, resolveSeo } from '../lib/seo';
 
 
 export default function DealersPage() {
   const [pageData, setPageData] = useState(null);
+  const [seo, setSeo] = useState(null);
+  const [preview, setPreview] = useState(false);
 
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "dealersPage"][0]{
-          heroHeadline,
-          heroDescription,
-          forms[]{
-            title,
-            subtitle,
-            href,
-            imgSrc,
-            alt,
-            width,
-            height
-          }
-        }`
-      )
-      .then((data) => setPageData(data))
-      .catch(console.error);
+    const params = new URLSearchParams(window.location.search)
+    const isPreview = params.get('preview') === 'true'
+    setPreview(isPreview)
+    const c = isPreview ? getClient(true) : client
+
+    const query = `*[_type == "dealersPage"][0]{
+      seoTitle, seoDescription,
+      heroHeadline,
+      heroDescription,
+      forms[]{ title, subtitle, href, imgSrc, alt, width, height }
+    }`
+
+    Promise.all([
+      c.fetch(query),
+      fetchGlobalSeo(isPreview)
+    ])
+    .then(([page, globalSeo]) => {
+      setPageData(page)
+      setSeo(resolveSeo({ page, fallback: globalSeo }))
+    })
+    .catch(console.error)
   }, []);
 
   if (!pageData) return <div>Loading...</div>;
 
   return (
     <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
+      {seo && <SEO title={seo.title} description={seo.description} noIndex={preview} />}
       <div className="relative bg-white">
-        <Header />
-        <StickyHeader />
         <section className="lg:my-[96px] md:my-[64px] my-[32px]">
           <div className="relative flex flex-col lg:flex-row justify-between items-stretch">
             <div className="w-full lg:max-w-[600px] flex flex-col gap-[16px] max-lg:text-center">

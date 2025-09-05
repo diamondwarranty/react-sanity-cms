@@ -1,53 +1,52 @@
 import React from 'react'
 import FooterSection from '../components/FooterSection'
 import BottomSection from '../components/BottomSection'
-import Header from '../components/Header'
-import StickyHeader from '../components/StickyHeader'
 import BlueBtn from '../components/BlueBtn'
 import WhiteBtn from '../components/WhiteBtn'
 import ProductCard from '../components/ProductCard'
 import ContactSection from '../components/ContactCards'
 import ContactForm from '../components/ContactForm'
-import { UseTitle } from '../components/useTitle'
-
 import { useEffect, useState } from 'react';
-import client from '../client'
+import client, { getClient } from '../client'
+import SEO from '../components/SEO';
+import { fetchGlobalSeo, resolveSeo } from '../lib/seo';
 
 export default function ContactPage() {
-  UseTitle("Contact");
   const [contactData, setContactData] = useState(null);
+  const [seo, setSeo] = useState(null);
+  const [preview, setPreview] = useState(false);
 
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "contactPage"][0]{
-          title,
-          hero {
-            headline,
-            description,
-            image {
-              asset->{
-                url
-              }
-            }
-          },
-          contactCards
-        }`
-      )
-      .then((data) => setContactData(data))
-      .catch(console.error);
+    const params = new URLSearchParams(window.location.search)
+    const isPreview = params.get('preview') === 'true'
+    setPreview(isPreview)
+    const c = isPreview ? getClient(true) : client
+
+    const query = `*[_type == "contactPage"][0]{
+      seoTitle, seoDescription,
+      title,
+      hero { headline, description, image{ asset->{ url } } },
+      contactCards
+    }`
+
+    Promise.all([
+      c.fetch(query),
+      fetchGlobalSeo(isPreview)
+    ])
+    .then(([page, globalSeo]) => {
+      setContactData(page)
+      setSeo(resolveSeo({ page, fallback: globalSeo }))
+    })
+    .catch(console.error)
   }, []);
 
   if (!contactData) return <div>Loading...</div>;
 
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
+        {seo && <SEO title={seo.title} description={seo.description} noIndex={preview} />}
         {/* Hero Section */}
         <div className="relative  bg-white">
-          {/* Background Image */}
-         
-        <Header />
-        <StickyHeader />
 
         <section className="lg:my-[96px] md:my-[64px] my-[32px] ">
           <div className="relative flex flex-col lg:flex-row justify-between items-stretch">

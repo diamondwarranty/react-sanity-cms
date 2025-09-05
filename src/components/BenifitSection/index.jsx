@@ -1,5 +1,5 @@
 import React from "react";
-import client from "../../client";
+import client, { getClient } from "../../client";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -25,7 +25,10 @@ const BenefitsSection = () => {
           }
         }`;
 
-        const data = await client.fetch(query);
+        const params = new URLSearchParams(window.location.search)
+        const isPreview = params.get('preview') === 'true'
+        const c = isPreview ? getClient(true) : client
+        const data = await c.fetch(query);
 
         const formattedBenefits = data?.benefits.map((item) => ({
           id: item._key,

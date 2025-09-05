@@ -1,26 +1,33 @@
 import React from 'react'
 import FooterSection from '../components/FooterSection'
 import BottomSection from '../components/BottomSection'
-import Header from '../components/Header'
-import StickyHeader from '../components/StickyHeader'
-import BlueBtn from '../components/BlueBtn'
-import WhiteBtn from '../components/WhiteBtn'
-import ProductCard from '../components/ProductCard'
 import ContactSection from '../components/ContactCards'
 import ContactForm from '../components/ContactForm'
 import ClaimForm from '../components/ClaimForm'
-import { UseTitle } from '../components/useTitle'
+import SEO from '../components/SEO'
+import { useEffect, useState } from 'react';
+import client, { getClient } from '../client'
+import { fetchGlobalSeo, resolveSeo } from '../lib/seo'
 
 export default function ClaimPage() {
-  UseTitle("Start a Claim");
+  const [seo, setSeo] = useState(null)
+  const [preview, setPreview] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const isPreview = params.get('preview') === 'true'
+    setPreview(isPreview)
+    fetchGlobalSeo(isPreview).then((globalSeo) => {
+      const page = { seoTitle: 'Start a Claim', seoDescription: 'Repair shop claim submission' }
+      setSeo(resolveSeo({ page, fallback: globalSeo }))
+    })
+  }, [])
+
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
+        {seo && <SEO title={seo.title} description={seo.description} noIndex={preview} />}
         {/* Hero Section */}
         <div className="relative  bg-white">
-          {/* Background Image */}
-         
-        <Header />
-        <StickyHeader />
 
         <section className="lg:my-[96px] md:my-[64px] my-[32px] ">
           <div className="relative flex flex-col lg:flex-row justify-between items-stretch">

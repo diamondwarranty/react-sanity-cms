@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import client from '../../client';
+import client, { getClient } from '../../client';
 
 const FooterSection = () => {
   const [footerData, setFooterData] = useState(null);
@@ -9,19 +9,20 @@ const FooterSection = () => {
 
   // Fetch data from Sanity
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const isPreview = params.get('preview') === 'true'
+    const c = isPreview ? getClient(true) : client
+
     const query = `*[_type == "footerSection"][0]{
       logoText,
       logoLink,
       rightText,
       disclaimer,
       copyright,
-      links[]{
-        text,
-        url
-      }
-    }`;
+      links[]{ text, url }
+    }`
 
-    client
+    c
       .fetch(query)
       .then((data) => {
         setFooterData(data);
