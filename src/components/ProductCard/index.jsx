@@ -267,7 +267,6 @@ const PlanCard = ({ title, description, sections, terms, footnotes = [] }) => {
 
 // Wrapper Component
 const PlansSection = ({plans}) => {
-  console.log(plans, "-----plans----------");
   return (
     <section className="mb-section">
       <div className="flex flex-col gap-8">

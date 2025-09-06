@@ -13,7 +13,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full max-w-[1200px] mx-auto">
+    <header className="w-full max-w-[1200px] mx-auto px-4 lg:px-0">
       {/* Top Bar */}
       <div className="text-sm py-3 lg:py-4">
         <div className="flex flex-wrap justify-between items-center">

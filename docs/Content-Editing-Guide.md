@@ -202,4 +202,59 @@ These help search engines and also control how pages appear when shared.
 
 If you need new sections, fields, design changes, or access updates, contact your project owner or developer. They can update the structure in Sanity or the website as needed.
 
+---
+
+## 13) Previewing draft content (Sanity Preview)
+
+Use Preview to see your changes on the website before you publish them.
+
+Prerequisites
+- Sanity API token with read access to drafts
+  1) Go to sanity.io/manage → your project → API → Tokens
+  2) Create a new token (name it “Local Preview”) with Read permissions
+- Allow your site origin in CORS
+  1) In the same API settings, add CORS origins:
+     - http://localhost:5173 (development)
+     - Your production domain (e.g., https://your-site.com)
+
+Set the token locally
+- Create a file named .env in the project root (or .env.local) with:
+  VITE_SANITY_READ_TOKEN=your_sanity_read_token
+- Restart the dev server after adding or changing .env
+
+How to use preview
+- Start the site locally: npm run dev (default: http://localhost:5173)
+- In Sanity, make your edits but do not publish (keep them as drafts)
+- Open any site URL with ?preview=true to view drafts:
+  - Home: http://localhost:5173/?preview=true
+  - About: http://localhost:5173/about?preview=true
+  - Coverages: http://localhost:5173/products?preview=true
+  - Dealers: http://localhost:5173/dealers?preview=true
+  - FAQ: http://localhost:5173/faq?preview=true
+  - Contact: http://localhost:5173/contact?preview=true
+  - Terms: http://localhost:5173/terms?preview=true
+- Remove ?preview=true to switch back to published content
+
+What you should see
+- The page content reflects your draft edits immediately (titles, descriptions, lists, etc.)
+- The browser tab title and SEO meta tags update for drafts as well
+
+Troubleshooting
+- Drafts do not appear
+  - Ensure ?preview=true is in the URL
+  - Ensure you restarted the dev server after creating .env
+  - Confirm the token in .env starts with “sk…” and has read permission
+  - Check CORS origins include your local URL or production domain
+- Unauthorized (401/403)
+  - Token is missing, wrong, or lacks permission; verify the token and role
+  - CORS origin not allowed in Sanity’s API settings
+- Home hero not updating
+  - The home hero is a “Hero Section” singleton with id heroSettings; make sure you are editing that document
+- Still stuck
+  - Confirm src/client.js projectId and dataset match your Sanity project
+
+Security note
+- Do not commit your .env files to version control
+- The preview token is used client-side for convenience; only use in trusted environments. For production-grade secure previews, consider a server-side proxy pattern.
+
 You’re all set to manage your content with confidence. Happy editing!
