@@ -35,7 +35,13 @@ export default function TermsPage() {
     .catch(console.error)
   }, []);
 
-  if (!termsData) return <div>Loading...</div>;
+  if (!termsData) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <p className="text-xl text-gray-500">Loading plans...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">

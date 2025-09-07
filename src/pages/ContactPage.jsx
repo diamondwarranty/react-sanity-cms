@@ -40,8 +40,13 @@ export default function ContactPage() {
     .catch(console.error)
   }, []);
 
-  if (!contactData) return <div>Loading...</div>;
-
+  if (!contactData) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <p className="text-xl text-gray-500">Loading plans...</p>
+      </div>
+    );
+  }
   return (
    <div className="min-h-screen bg-white lg:px-8 px-4 sm:px-6">
         {seo && <SEO title={seo.title} description={seo.description} noIndex={preview} />}
