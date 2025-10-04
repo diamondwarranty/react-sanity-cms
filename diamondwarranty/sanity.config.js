@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'diamond_warranty',
 
-  projectId: '96qtlbls',
+  projectId: 'q26e4dqa',
   dataset: 'production',
 
   plugins: [
