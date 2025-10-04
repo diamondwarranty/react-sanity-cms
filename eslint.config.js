@@ -25,11 +25,5 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
-    {
-    files: ['pages/api/**/*.js'],
-    languageOptions: {
-      globals: globals.node,
-    },
-   },
   },
 ])
