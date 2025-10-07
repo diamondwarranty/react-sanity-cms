@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
     await resend.emails.send({
       from: "Claims Form <onboarding@diamondwarrantycorp.com>", // must be verified
-      to: "amartinelli@diamondwarrantycorp.com",
+      to: "support@ahsantaz.com",
       subject: "📩 New Claim Form Submission",
       html,
     });
