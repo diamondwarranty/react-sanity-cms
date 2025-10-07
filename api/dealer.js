@@ -43,7 +43,7 @@ if (files.files) {
 
     await resend.emails.send({
       from: "Dealer Form <onboarding@diamondwarrantycorp.com>", // Must be verified in Resend
-      to: "amartinelli@diamondwarrantycorp.com",
+      to: "support@ahsantaz.com",
       subject: "New Dealer Application",
       html: `
         <h2>Dealer Application Submitted</h2>
