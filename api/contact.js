@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     await resend.emails.send({
       from: "Website Contact <onboarding@diamondwarrantycorp.com>",
-      to: "support@ahsantaz.com", // change to client email when ready
+      to: "claims@diamondwarrantycorp.com", // change to client email when ready
       subject: "📩 New Contact Form Submission",
       html: `
         <h2>New Contact Form Message</h2>
